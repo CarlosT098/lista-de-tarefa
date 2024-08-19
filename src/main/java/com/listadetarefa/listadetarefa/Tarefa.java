@@ -1,24 +1,24 @@
 package com.listadetarefa.listadetarefa;
 
 public class Tarefa {
-    private String nome;
+    private String titulo;
     private String descricao;
     private int importancia;
     private Boolean feito;
 
-    public Tarefa(String nome, String descricao, int importancia) {
-        this.nome = nome;
+    public Tarefa(String titulo, String descricao, int importancia) {
+        this.titulo = titulo;
         this.descricao = descricao;
         this.importancia = importancia;
         this.feito = false;
     }
 
-    public String getNome() {
-        return nome;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getDescricao() {
