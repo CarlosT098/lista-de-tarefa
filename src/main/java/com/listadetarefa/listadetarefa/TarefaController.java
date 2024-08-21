@@ -1,12 +1,15 @@
 package com.listadetarefa.listadetarefa;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TarefaController {
+    @FXML
+    private Label teste;
+
     @FXML
     private TextField tfTitulo;
 
@@ -18,6 +21,10 @@ public class TarefaController {
 
     @FXML
     public void btnSalvar(){
+        Tarefa tarefa = new Tarefa(tfTitulo.getText(), tfDescricao.getText(), spImportancia.getValue());
+        List<Tarefa> listaTarefa = new ArrayList<Tarefa>();
+        listaTarefa.add(tarefa);
+        teste.setText("Salvo!");
     }
 
 }
