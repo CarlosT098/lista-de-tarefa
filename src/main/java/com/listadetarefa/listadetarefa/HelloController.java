@@ -10,7 +10,7 @@ public class HelloController {
 
     public void initialize() {
         // Criação de um array de exemplo
-        String[] items = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5"};
+        String[] items = {"arroz", "Item 2", "Item 3", "Item 4", "Item 5"};
 
         // Percorrer o array e adicionar uma Label para cada item
         for (String item : items) {

@@ -7,12 +7,14 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
-
+    
+    /* 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException{
         // Criação de um array de exemplo
         String[] items = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5"};
 
@@ -33,6 +35,7 @@ public class HelloApplication extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+    */
 
     /* 
     @Override
@@ -46,6 +49,34 @@ public class HelloApplication extends Application {
     */
 
     public static void main(String[] args) {
-        launch();
+        salvar();
+        //launch();
+    }
+
+    public static void salvar(){
+        String nome = "João";
+        int idade = 25;
+
+        try {
+            // Criando um FileWriter para escrever no arquivo "dados.txt"
+            FileWriter writer = new FileWriter("dados.txt");
+            
+            // Escrevendo as variáveis no arquivo
+            writer.write(nome + "," + idade);
+            
+            // Fechando o FileWriter
+            writer.close();
+            
+            System.out.println("Dados salvos com sucesso!");
+        } catch (IOException e) {
+            System.out.println("Ocorreu um erro ao salvar os dados.");
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void start(Stage arg0) throws Exception {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'start'");
     }
 }
