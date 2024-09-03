@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -50,6 +52,7 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
         salvar();
+        ler();
         //launch();
     }
 
@@ -74,6 +77,29 @@ public class HelloApplication extends Application {
         }
     }
 
+    public static void ler(){
+        try {
+            // Criando um BufferedReader para ler o arquivo "dados.txt"
+            BufferedReader reader = new BufferedReader(new FileReader("dados.txt"));
+            
+            // Lendo o conteúdo do arquivo
+            String linha = reader.readLine();
+            
+            // Separando os dados (nome e idade) pelo caractere ","
+            String[] dados = linha.split(",");
+            String nome = dados[0];
+            int idade = Integer.parseInt(dados[1]);
+            
+            // Fechando o BufferedReader
+            reader.close();
+            
+            System.out.println("Nome: " + nome);
+            System.out.println("Idade: " + idade);
+        } catch (IOException e) {
+            System.out.println("Ocorreu um erro ao carregar os dados.");
+            e.printStackTrace();
+        }
+    }
     @Override
     public void start(Stage arg0) throws Exception {
         // TODO Auto-generated method stub
