@@ -93,14 +93,17 @@ public class HelloApplication extends Application {
             
             // Separando os dados (nome e idade) pelo caractere ","
             String[] dados = linha.split(",");
-            String nome = dados[0];
-            int idade = Integer.parseInt(dados[1]);
-            
-            // Fechando o BufferedReader
-            reader.close();
-            
-            System.out.println("Nome: " + nome);
-            System.out.println("Idade: " + idade);
+            String nome;
+            int idade;
+            for(int i = 0; i<=4; i++){
+                nome = dados[i];
+                i++;
+                idade = Integer.parseInt(dados[i]);
+                reader.close();
+                System.out.println("Nome: " + nome);
+                System.out.println("Idade: " + idade);
+            }
+
         } catch (IOException e) {
             System.out.println("Ocorreu um erro ao carregar os dados.");
             e.printStackTrace();
