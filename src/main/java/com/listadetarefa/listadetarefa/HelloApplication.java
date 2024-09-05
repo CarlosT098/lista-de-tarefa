@@ -3,6 +3,7 @@ package com.listadetarefa.listadetarefa;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -14,7 +15,6 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
     
-    /* 
     @Override
     public void start(Stage primaryStage) throws IOException{
         // Criação de um array de exemplo
@@ -26,7 +26,8 @@ public class HelloApplication extends Application {
         // Percorrer o array e adicionar uma Label para cada item
         for (String item : items) {
             Label label = new Label(item);
-            vbox.getChildren().add(label); // Adiciona a label no VBox
+            CheckBox cb = new CheckBox(item);
+            vbox.getChildren().add(cb); // Adiciona a label no VBox
         }
 
         // Configuração da cena com o VBox
@@ -37,7 +38,6 @@ public class HelloApplication extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-    */
 
     /* 
     @Override
@@ -53,19 +53,25 @@ public class HelloApplication extends Application {
     public static void main(String[] args) {
         salvar();
         ler();
-        //launch();
+        launch();
     }
 
     public static void salvar(){
         String nome = "João";
         int idade = 25;
 
+        String[] nomes = {"joao", "maria", "douglas", "clara", "amanda"};
+
         try {
             // Criando um FileWriter para escrever no arquivo "dados.txt"
             FileWriter writer = new FileWriter("dados.txt");
             
             // Escrevendo as variáveis no arquivo
-            writer.write(nome + "," + idade);
+            for(int i = 0; i<=4; i++){
+                writer.write(nomes[i] + "," + idade + ",");
+            }
+            
+            //writer.write(nome + "," + idade);
             
             // Fechando o FileWriter
             writer.close();
@@ -100,9 +106,5 @@ public class HelloApplication extends Application {
             e.printStackTrace();
         }
     }
-    @Override
-    public void start(Stage arg0) throws Exception {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'start'");
-    }
+
 }
