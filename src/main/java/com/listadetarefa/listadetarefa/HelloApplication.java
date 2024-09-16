@@ -1,9 +1,13 @@
 package com.listadetarefa.listadetarefa;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -35,13 +39,28 @@ public class HelloApplication extends Application {
         // Percorrer o array e adicionar uma Label para cada item
         int c = 0;
         while (items.size() > c) {
-            Label label = new Label(items.get(c));
             CheckBox cb = new CheckBox(items.get(c));
-            vbox.getChildren().add(label); // Adiciona a label no VBox
+            vbox.getChildren().add(cb);
             c++;
         }
 
-        
+        Button bt = new Button("Click Me");
+        bt.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Parent pagina2Parent = null;
+                try {
+                    pagina2Parent = FXMLLoader.load(getClass().getResource("tarefa-view.fxml"));
+                    Scene pagina2Scene = new Scene(pagina2Parent);
+                    Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                    stage.setScene(pagina2Scene);
+                    stage.show();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        vbox.getChildren().add(bt);
 
         // Configuração da cena com o VBox
         Scene scene = new Scene(vbox, 300, 200);
