@@ -90,27 +90,26 @@ public class HelloApplication extends Application {
 
     public void salvar(List<Tarefa> listaTarefa, List<String> atual){
 
-        int c = 0;
+
 
         listaTarefa.get(0).getTitulo();
 
-        String[] nomes = {"joao", "maria", "douglas", "clara", "amanda"};
 
         try {
             // Criando um FileWriter para escrever no arquivo "dados.txt"
             FileWriter writer = new FileWriter("dados.txt");
             
-            // Escrevendo as variáveis no arquivo            
+            // Escrevendo as variáveis no arquivo
+            int c = 0;
             while (listaTarefa.size() > c) {
                 writer.write(listaTarefa.get(c).getTitulo() + ",");
                 c++;
             }
-
+            c = 0;
             while (atual.size() > c) {
                 writer.write(atual.get(c) + ",");
                 c++;
             }
-            //writer.write(nome + "," + idade);
             
             // Fechando o FileWriter
             writer.close();
