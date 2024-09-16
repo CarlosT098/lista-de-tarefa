@@ -32,10 +32,11 @@ public class TarefaController {
     public void btnSalvar(ActionEvent event) throws IOException {
         Tarefa tarefa = new Tarefa(tfTitulo.getText(), tfDescricao.getText(), spImportancia.getValue());
         List<Tarefa> listaTarefa = new ArrayList<Tarefa>();
+        HelloApplication application = new HelloApplication();
         listaTarefa.add(tarefa);
         teste.setText("Salvo!");
         HelloApplication test = new HelloApplication();
-        test.salvar(listaTarefa);
+        test.salvar(listaTarefa, application.ler());
 
         Parent pagina2Parent = FXMLLoader.load(getClass().getResource("index-view.fxml"));
         Scene pagina2Scene = new Scene(pagina2Parent);

@@ -44,7 +44,7 @@ public class HelloApplication extends Application {
             c++;
         }
 
-        Button bt = new Button("Click Me");
+        Button bt = new Button("nova tarefa");
         bt.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -88,7 +88,7 @@ public class HelloApplication extends Application {
         launch();
     }
 
-    public void salvar(List<Tarefa> listaTarefa){
+    public void salvar(List<Tarefa> listaTarefa, List<String> atual){
 
         int c = 0;
 
@@ -105,6 +105,11 @@ public class HelloApplication extends Application {
                 writer.write(listaTarefa.get(c).getTitulo() + ",");
                 c++;
             }
+
+            while (atual.size() > c) {
+                writer.write(atual.get(c) + ",");
+                c++;
+            }
             //writer.write(nome + "," + idade);
             
             // Fechando o FileWriter
@@ -117,7 +122,7 @@ public class HelloApplication extends Application {
         }
     }
 
-    public static ArrayList<String> ler(){
+    public ArrayList<String> ler(){
         try {
             // Criando um BufferedReader para ler o arquivo "dados.txt"
             BufferedReader reader = new BufferedReader(new FileReader("dados.txt"));
@@ -128,14 +133,18 @@ public class HelloApplication extends Application {
             // Separando os dados (nome e idade) pelo caractere ","
             ArrayList<String> nomes = new ArrayList<String>();
             String[] dados = linha.split(",");
-            
-            for(int i = 0; i<=4; i++){
-                nomes.add(dados[i]);
-                i++;
-                
-                reader.close();
+            int c = 0;
+            if (dados.length > 0){
+                while (dados.length > c){
+                    nomes.add(dados[c]);
+                    c++;
+
+                    reader.close();
+                }
+                return nomes;
+            }else {
+                return null;
             }
-            return nomes;
 
         } catch (IOException e) {
             System.out.println("Ocorreu um erro ao carregar os dados.");
