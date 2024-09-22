@@ -32,7 +32,7 @@ public class HelloController {
     }
 
     @FXML
-    public void novasTarefa(ActionEvent event) throws IOException {
+    public void novasTarefa(@SuppressWarnings("exports") ActionEvent event) throws IOException {
         Parent pagina2Parent = FXMLLoader.load(getClass().getResource("tarefa-view.fxml"));
         Scene pagina2Scene = new Scene(pagina2Parent);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

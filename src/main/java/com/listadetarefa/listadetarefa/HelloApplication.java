@@ -15,7 +15,7 @@ import java.util.List;
 public class HelloApplication extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(@SuppressWarnings("exports") Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
         primaryStage.setTitle("Lista de Tarefas");
         primaryStage.setScene(new Scene(root, 300, 275));
@@ -30,10 +30,7 @@ public class HelloApplication extends Application {
         listaTarefa.get(0).getTitulo();
 
         try {
-            // Criando um FileWriter para escrever no arquivo "dados.txt"
             FileWriter writer = new FileWriter("dados.txt");
-
-            // Escrevendo as variáveis no arquivo
             int c = 0;
             while (listaTarefa.size() > c) {
                 writer.write(listaTarefa.get(c).getTitulo() + ",");
@@ -44,27 +41,18 @@ public class HelloApplication extends Application {
                 writer.write(atual.get(c) + ",");
                 c++;
             }
-
-            // Fechando o FileWriter
             writer.close();
-
-            System.out.println("Dados salvos com sucesso!");
         } catch (IOException e) {
-            System.out.println("Ocorreu um erro ao salvar os dados.");
             e.printStackTrace();
         }
     }
 
+    @SuppressWarnings("resource")
     public ArrayList<String> ler() {
         try {
-            // Criando um BufferedReader para ler o arquivo "dados.txt"
             BufferedReader reader = new BufferedReader(new FileReader("dados.txt"));
-
-            // Lendo o conteúdo do arquivo
             String linha = reader.readLine();
-
-            // Separando os dados (nome e idade) pelo caractere ","
-            ArrayList<String> nomes = new ArrayList<String>();
+            ArrayList<String> nomes = new ArrayList<>();
             String[] dados = linha.split(",");
             int c = 0;
             if (dados.length > 0) {
@@ -76,13 +64,12 @@ public class HelloApplication extends Application {
                 }
                 return nomes;
             } else {
-                return null;
+                return new ArrayList<>();
             }
 
         } catch (IOException e) {
-            System.out.println("Ocorreu um erro ao carregar os dados.");
             e.printStackTrace();
-            return null;
+            return new ArrayList<>();
 
         }
     }

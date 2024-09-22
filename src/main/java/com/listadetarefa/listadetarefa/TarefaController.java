@@ -27,10 +27,10 @@ public class TarefaController {
     private Spinner<Integer> spImportancia;
 
     @FXML
-    public void btnSalvar(ActionEvent event) throws IOException {
+    public void btnSalvar(@SuppressWarnings("exports") ActionEvent event) throws IOException {
 
         Tarefa tarefa = new Tarefa(tfTitulo.getText(), tfDescricao.getText(), spImportancia.getValue());
-        List<Tarefa> listaTarefa = new ArrayList<Tarefa>();
+        List<Tarefa> listaTarefa = new ArrayList<>();
         HelloApplication application = new HelloApplication();
         listaTarefa.add(tarefa);
         teste.setText("Salvo!");
