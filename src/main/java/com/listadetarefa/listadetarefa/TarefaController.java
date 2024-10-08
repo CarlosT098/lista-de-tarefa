@@ -29,7 +29,8 @@ public class TarefaController {
     @FXML
     public void btnSalvar(@SuppressWarnings("exports") ActionEvent event) throws IOException {
 
-        Tarefa tarefa = new Tarefa(tfTitulo.getText(), tfDescricao.getText(), spImportancia.getValue());
+        if(tfTitulo == null){
+            Tarefa tarefa = new Tarefa(tfTitulo.getText(), tfDescricao.getText(), spImportancia.getValue());
         List<Tarefa> listaTarefa = new ArrayList<>();
         HelloApplication application = new HelloApplication();
         listaTarefa.add(tarefa);
@@ -42,6 +43,13 @@ public class TarefaController {
         stage.setTitle("Dynamic Labels Example");
         stage.setScene(new Scene(root, 300, 275));
         stage.show();
+        }else{
+            Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
+            dialogoErro.setTitle("Diálogo de Error");
+            dialogoErro.setHeaderText("Digite novamente");
+            dialogoErro.setContentText("Dados incompletos");
+            dialogoErro.showAndWait();
+        }
 
     }
 
