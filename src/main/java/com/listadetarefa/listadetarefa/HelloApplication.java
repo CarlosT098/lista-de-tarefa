@@ -59,9 +59,9 @@ public class HelloApplication extends Application {
                 while (dados.length > c) {
                     nomes.add(dados[c]);
                     c++;
-
                     reader.close();
                 }
+                nomes.sort(null);
                 return nomes;
             } else {
                 return new ArrayList<>();
