@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -25,6 +26,8 @@ public class HelloApplication extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+    
 
     public void salvar(List<Tarefa> listaTarefa, List<String> atual) {
         listaTarefa.get(0).getTitulo();
@@ -69,6 +72,12 @@ public class HelloApplication extends Application {
 
         } catch (IOException e) {
             e.printStackTrace();
+            File arquivo = new File("/dados.txt");
+            try {
+                arquivo.createNewFile();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
             return new ArrayList<>();
 
         }

@@ -29,26 +29,27 @@ public class TarefaController {
     @FXML
     public void btnSalvar(@SuppressWarnings("exports") ActionEvent event) throws IOException {
 
-        if(tfTitulo == null){
-            Tarefa tarefa = new Tarefa(tfTitulo.getText(), tfDescricao.getText(), spImportancia.getValue());
-        List<Tarefa> listaTarefa = new ArrayList<>();
-        HelloApplication application = new HelloApplication();
-        listaTarefa.add(tarefa);
-        teste.setText("Salvo!");
-        HelloApplication test = new HelloApplication();
-        test.salvar(listaTarefa, application.ler());
-
-        Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Dynamic Labels Example");
-        stage.setScene(new Scene(root, 300, 275));
-        stage.show();
-        }else{
+        if(tfTitulo.getText().isEmpty()){
             Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
             dialogoErro.setTitle("Diálogo de Error");
             dialogoErro.setHeaderText("Digite novamente");
             dialogoErro.setContentText("Dados incompletos");
             dialogoErro.showAndWait();
+        }else{
+            Tarefa tarefa = new Tarefa(tfTitulo.getText(), tfDescricao.getText(), spImportancia.getValue());
+            List<Tarefa> listaTarefa = new ArrayList<>();
+            HelloApplication application = new HelloApplication();
+            listaTarefa.add(tarefa);
+            teste.setText("Salvo!");
+            HelloApplication test = new HelloApplication();
+            test.salvar(listaTarefa, application.ler());
+
+            Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Dynamic Labels Example");
+            stage.setScene(new Scene(root, 300, 275));
+            stage.show();
+            
         }
 
     }
