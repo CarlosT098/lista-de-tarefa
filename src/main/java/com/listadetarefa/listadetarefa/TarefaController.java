@@ -29,7 +29,7 @@ public class TarefaController {
     @FXML
     public void btnSalvar(@SuppressWarnings("exports") ActionEvent event) throws IOException {
 
-        if(tfTitulo.getText().isEmpty()){
+        if(tfTitulo.getText().isEmpty() || tfDescricao.getText().isEmpty()){
             Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
             dialogoErro.setTitle("Diálogo de Error");
             dialogoErro.setHeaderText("Digite novamente");

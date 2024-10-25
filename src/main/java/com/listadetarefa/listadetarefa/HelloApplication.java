@@ -27,8 +27,6 @@ public class HelloApplication extends Application {
         launch(args);
     }
 
-    
-
     public void salvar(List<Tarefa> listaTarefa, List<String> atual) {
         listaTarefa.get(0).getTitulo();
 
@@ -79,7 +77,6 @@ public class HelloApplication extends Application {
                 e1.printStackTrace();
             }
             return new ArrayList<>();
-
         }
     }
 
