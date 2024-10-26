@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Node;
@@ -27,6 +28,9 @@ public class HelloController {
         while (items.size() > c) {
             CheckBox cb = new CheckBox(items.get(c));
             vboxContainer.getChildren().add(cb);
+            c++;
+            Label lb = new Label(items.get(c));
+            vboxContainer.getChildren().add(lb);
             c++;
         }
     }

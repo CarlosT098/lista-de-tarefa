@@ -35,6 +35,7 @@ public class HelloApplication extends Application {
             int c = 0;
             while (listaTarefa.size() > c) {
                 writer.write(listaTarefa.get(c).getTitulo() + ",");
+                writer.write(listaTarefa.get(c).getDescricao() + ",");
                 c++;
             }
             c = 0;
